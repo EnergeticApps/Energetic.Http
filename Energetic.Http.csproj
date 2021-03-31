@@ -30,9 +30,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Energetic.Text" Version="0.0.1-alpha" />
 	  <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="3.1.12" />
 	  <PackageReference Include="System.Text.Json" Version="5.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Energetic.Text\Energetic.Text.csproj" />
 	</ItemGroup>
 
 </Project>
