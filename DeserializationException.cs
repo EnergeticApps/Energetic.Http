@@ -8,30 +8,7 @@ namespace Energetic.Http
 {
     public class DeserializationException<T> : InvalidOperationException
     {
-        public DeserializationException() : base() { }
-
-        public DeserializationException(string message) : base(message) { }
-
-        public DeserializationException(string message, Exception innerException) : base(message, innerException) { }
-
-        public static DeserializationException<T> FromJson(string? json)
-        {
-            if(string.IsNullOrWhiteSpace(json))
-            {
-                return new DeserializationException<T>(
-                    ExceptionMessages.DeserializingBlankJsonProblem<T>()) 
-                { Json = json };
-            }
-            else
-            {
-                return new DeserializationException<T>(
-                    ExceptionMessages.DeserializationProblem<T>(json))
-                { Json = json };
-            }
-        }
-
-
-        public string? Json { get; private set;  }
+        public DeserializationException(string jsonString) : base($"Couldn't deserialize \"{jsonString}\" to {typeof(T)}.") { }
 
     }
 }

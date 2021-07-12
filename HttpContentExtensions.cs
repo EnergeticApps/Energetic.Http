@@ -17,7 +17,7 @@ namespace System.Net.Http
             string contentString = await content.ReadAsStringAsync();
             var result = JsonSerializer.Deserialize<TDestination>(contentString);
 
-            return result ?? throw DeserializationException<TDestination>.FromJson(contentString);
+            return result ?? throw new DeserializationException<TDestination>(contentString);
         }
     }
 }
