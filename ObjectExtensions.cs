@@ -9,6 +9,12 @@ namespace System
 {
     public static class ObjectExtensions
     {
+        private static JsonSerializerOptions _jsonSerializerOptions = new JsonSerializerOptions()
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            PropertyNameCaseInsensitive = true,
+        };
+
         /// <summary>
         /// Creates HttpContent from a JSON string
         /// </summary>
@@ -20,7 +26,7 @@ namespace System
             if (value is null)
                 throw new ArgumentNullException(nameof(value));
 
-            string json = JsonSerializer.Serialize(value);
+            string json = JsonSerializer.Serialize(value, _jsonSerializerOptions);
 
             return json.ConvertToJsonStringContent();
         }
